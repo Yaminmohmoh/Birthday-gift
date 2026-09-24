@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>For You, Babe💗</title>
+<title>For You, သဲသဲလေး💗</title>
 
 <style>
 
@@ -926,7 +926,85 @@ body.magic-mode {
     box-shadow: 0 5px 20px rgba(100,0,50,0.2);
 }
 
+/* ============================= */
+/* FALLING PHOTO HEARTS */
+/* ============================= */
 
+.photo-heart {
+    position: fixed;
+    top: -120px;
+    width: 90px;
+    height: 90px;
+
+    z-index: 10002;
+    pointer-events: none;
+
+    overflow: hidden;
+
+    /* Heart shape */
+    clip-path: polygon(
+        50% 100%,
+        5% 48%,
+        5% 28%,
+        15% 12%,
+        30% 7%,
+        50% 25%,
+        70% 7%,
+        85% 12%,
+        95% 28%,
+        95% 48%
+    );
+
+    background: #ff4f91;
+
+    box-shadow:
+        0 0 15px white,
+        0 0 30px #ff8fc4,
+        0 0 50px #ff3f87;
+
+    animation: photoHeartFall linear forwards;
+}
+
+.photo-heart img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+@keyframes photoHeartFall {
+
+    0% {
+        transform:
+            translateY(-120px)
+            rotate(-15deg)
+            scale(0.4);
+
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    50% {
+        transform:
+            translateY(50vh)
+            rotate(15deg)
+            scale(1);
+    }
+
+    100% {
+        transform:
+            translateY(120vh)
+            rotate(-20deg)
+            scale(0.75);
+
+        opacity: 0;
+    }
+}
 
 
 /* ============================= */
@@ -1112,7 +1190,7 @@ body.magic-mode {
     </div>
 
     <h1>
-        For You,  Thae' 💗
+        For You,  သဲသဲလေး💗
     </h1>
 
     <p class="description">
@@ -1157,17 +1235,21 @@ body.magic-mode {
 
     <p class="description">
 
-        Before your birthday magic begins...
+        Close your eyes, Babe... 💗
 
         <br>
-
-        Take a little moment.
-
-        <br><br>
 
         Make a beautiful wish
         in your heart. 💕
 
+        <br>
+        <strong>But remember... 🤫</strong>
+	<br>
+        You can't tell me your wish Hee:)
+         <br>
+    When you're ready, light the candle. 🕯️
+
+       
     </p>
 
 
@@ -1212,7 +1294,7 @@ body.magic-mode {
     id="screen3">
 
     <div class="label">
-        Your birthday magic ✨
+        Love You So Much✨
     </div>
 
 
@@ -1221,7 +1303,7 @@ body.magic-mode {
         <div class="heart"></div>
 
         <div class="heart-name">
-            Julia
+            သဲသဲလေး
         </div>
 
     </div>
@@ -1270,7 +1352,7 @@ body.magic-mode {
 
 
     <div class="final-name">
-        Julia
+        သဲသဲလေး
     </div>
 
 
@@ -1290,7 +1372,7 @@ body.magic-mode {
         <br><br>
 
         <strong>
-            Happy Birthday, My Beautiful. 🎂💕
+            Happy Birthday, My precious girl. 🎂💕
         </strong>
 
     </div>
@@ -1312,19 +1394,14 @@ body.magic-mode {
 </div>
 
 
-
 <script>
-
 
 /* ================================= */
 /* ELEMENTS */
 /* ================================= */
 
-const music =
-    document.getElementById("music");
-
-const flame =
-    document.getElementById("flame");
+const music = document.getElementById("music");
+const flame = document.getElementById("flame");
 
 
 /* ================================= */
@@ -1333,19 +1410,11 @@ const flame =
 
 function showScreen(number) {
 
-    document
-        .querySelectorAll(".screen")
-        .forEach(screen => {
+    document.querySelectorAll(".screen").forEach(screen => {
+        screen.classList.remove("active");
+    });
 
-            screen.classList.remove("active");
-
-        });
-
-
-    document
-        .getElementById("screen" + number)
-        .classList.add("active");
-
+    document.getElementById("screen" + number).classList.add("active");
 }
 
 
@@ -1357,16 +1426,18 @@ function start() {
 
     music.volume = 1.0;
 
-    music.play();
+    music.play().catch(error => {
+        console.log("Music could not start:", error);
+    });
 
     sparkleBurst();
-
     confetti(70);
 
     setTimeout(() => {
         showScreen(2);
     }, 900);
 }
+
 
 /* ================================= */
 /* LIGHT CANDLE */
@@ -1378,16 +1449,10 @@ function lightCandle() {
         return;
     }
 
-
     flame.classList.add("lit");
 
-
     sparkleBurst();
-
     confetti(100);
-
-
-    /* Wait for the magical moment */
 
     setTimeout(() => {
 
@@ -1396,7 +1461,6 @@ function lightCandle() {
         massiveCelebration();
 
     }, 1800);
-
 }
 
 
@@ -1409,11 +1473,8 @@ function nextMessage() {
     sparkleBurst();
 
     setTimeout(() => {
-
         showScreen(4);
-
     }, 600);
-
 }
 
 
@@ -1425,37 +1486,57 @@ function finalCelebrate() {
 
     document.body.classList.add("magic-mode");
 
-    // First big explosion 🎉
     massiveCelebration();
     sparkleBurst();
 
-    // Her name appears in the middle 💗
+
+    /* Center message */
+
     const name = document.createElement("div");
 
     name.className = "magic-name";
 
-    name.innerHTML = "ချစ်တယ်' 💗";
+    name.innerHTML = "Happy Birthday' 💗";
 
     document.body.appendChild(name);
 
 
-    // Falling hearts with her name 💕
-    let count = 0;
+    /* Falling hearts */
+
+    let heartCount = 0;
 
     const heartRain = setInterval(() => {
 
         createMagicHeart();
 
-        count++;
+        heartCount++;
 
-        if (count >= 100) {
+        if (heartCount >= 100) {
             clearInterval(heartRain);
         }
 
     }, 70);
 
 
-    // Big floating hearts 💗
+    /* Falling photo hearts */
+
+    let photoCount = 0;
+
+    const photoRain = setInterval(() => {
+
+        createPhotoHeart();
+
+        photoCount++;
+
+        if (photoCount >= 60) {
+            clearInterval(photoRain);
+        }
+
+    }, 120);
+
+
+    /* Giant floating hearts */
+
     for (let i = 0; i < 15; i++) {
 
         setTimeout(() => {
@@ -1467,7 +1548,8 @@ function finalCelebrate() {
     }
 
 
-    // Shiny stars ✨
+    /* Sparkling stars */
+
     for (let i = 0; i < 100; i++) {
 
         setTimeout(() => {
@@ -1479,7 +1561,8 @@ function finalCelebrate() {
     }
 
 
-    // More confetti 🎉
+    /* Extra confetti */
+
     setTimeout(() => {
         massiveCelebration();
     }, 1000);
@@ -1490,7 +1573,8 @@ function finalCelebrate() {
     }, 2500);
 
 
-    // Remove center name after animation
+    /* Remove center name */
+
     setTimeout(() => {
 
         name.remove();
@@ -1498,9 +1582,12 @@ function finalCelebrate() {
         document.body.classList.remove("magic-mode");
 
     }, 4500);
-
 }
 
+
+/* ================================= */
+/* MAGIC HEART */
+/* ================================= */
 
 function createMagicHeart() {
 
@@ -1509,11 +1596,11 @@ function createMagicHeart() {
     heart.className = "magic-heart";
 
     const names = [
-        "ချစ်တယ်' 💗",
-        "ချစ်တယ်' ♡",
-        "ချစ်တယ်' ✨",
-        "ချစ်တယ်' 💕",
-        "ချစ်တယ်' 🌸"
+        "Happy Birthday' 💗",
+        "Happy Birthday' ♡",
+        "Happy Birthday' ✨",
+        "Happy Birthday' 💕",
+        "Happy Birthday' 🌸"
     ];
 
     heart.innerHTML =
@@ -1538,6 +1625,10 @@ function createMagicHeart() {
 }
 
 
+/* ================================= */
+/* GIANT HEART */
+/* ================================= */
+
 function createGiantHeart() {
 
     const heart = document.createElement("div");
@@ -1556,6 +1647,10 @@ function createGiantHeart() {
     }, 4500);
 }
 
+
+/* ================================= */
+/* MAGIC STAR */
+/* ================================= */
 
 function createMagicStar() {
 
@@ -1583,6 +1678,45 @@ function createMagicStar() {
     }, 1600);
 }
 
+
+/* ================================= */
+/* FALLING PHOTO HEARTS */
+/* ================================= */
+
+function createPhotoHeart() {
+
+    const heart = document.createElement("div");
+
+    heart.className = "photo-heart";
+
+    const photo = document.createElement("img");
+
+    photo.src = "her-photo.jpg";
+
+    photo.alt = "Beautiful birthday memory";
+
+    heart.appendChild(photo);
+
+    heart.style.left =
+        Math.random() * 90 + "vw";
+
+    const size =
+        Math.random() * 35 + 65;
+
+    heart.style.width = size + "px";
+    heart.style.height = size + "px";
+
+    heart.style.animationDuration =
+        (Math.random() * 3 + 4) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 8000);
+}
+
+
 /* ================================= */
 /* MUSIC */
 /* ================================= */
@@ -1593,15 +1727,17 @@ function toggleMusic() {
 
         music.volume = 1.0;
 
-        music.play();
+        music.play().catch(error => {
+            console.log("Music could not start:", error);
+        });
 
     } else {
 
         music.pause();
 
     }
-
 }
+
 
 /* ================================= */
 /* CONFETTI */
@@ -1610,62 +1746,46 @@ function toggleMusic() {
 function confetti(amount) {
 
     const colors = [
-
         "#ffffff",
         "#ffd1e5",
         "#ff4f91",
         "#ffd166",
         "#ff8fab",
         "#f8c8dc"
-
     ];
 
-
-    for(let i = 0; i < amount; i++) {
+    for (let i = 0; i < amount; i++) {
 
         const piece =
             document.createElement("div");
 
-
         piece.className = "confetti";
-
 
         piece.style.left =
             Math.random() * 100 + "vw";
 
-
         piece.style.background =
             colors[
                 Math.floor(
-                    Math.random() *
-                    colors.length
+                    Math.random() * colors.length
                 )
             ];
-
 
         piece.style.animationDuration =
             (Math.random() * 2 + 2) + "s";
 
-
         piece.style.width =
             (Math.random() * 7 + 5) + "px";
-
 
         piece.style.height =
             (Math.random() * 12 + 6) + "px";
 
-
         document.body.appendChild(piece);
 
-
         setTimeout(() => {
-
             piece.remove();
-
         }, 5000);
-
     }
-
 }
 
 
@@ -1686,48 +1806,36 @@ function massiveCelebration() {
 
 function sparkleBurst() {
 
-    for(let i = 0; i < 25; i++) {
+    for (let i = 0; i < 25; i++) {
 
         const sparkle =
             document.createElement("div");
 
-
-        sparkle.className =
-            "sparkle";
-
+        sparkle.className = "sparkle";
 
         sparkle.innerHTML =
-            ["✨","💗","💕","✦","♡"]
+            ["✨", "💗", "💕", "✦", "♡"]
             [
                 Math.floor(
                     Math.random() * 5
                 )
             ];
 
-
         sparkle.style.left =
             Math.random() * 100 + "vw";
-
 
         sparkle.style.top =
             Math.random() * 100 + "vh";
 
-
         sparkle.style.fontSize =
             (Math.random() * 15 + 12) + "px";
 
-
         document.body.appendChild(sparkle);
 
-
         setTimeout(() => {
-
             sparkle.remove();
-
         }, 1000);
-
     }
-
 }
 
 
@@ -1740,45 +1848,33 @@ setInterval(() => {
     const heart =
         document.createElement("div");
 
-
     heart.className =
         "floating-heart";
 
-
     heart.innerHTML =
-        ["♡","♥","💕","💗","✨"]
+        ["♡", "♥", "💕", "💗", "✨"]
         [
             Math.floor(
                 Math.random() * 5
             )
         ];
 
-
     heart.style.left =
         Math.random() * 100 + "vw";
-
 
     heart.style.fontSize =
         (Math.random() * 18 + 12) + "px";
 
-
     heart.style.animationDuration =
         (Math.random() * 6 + 7) + "s";
 
-
     document.body.appendChild(heart);
 
-
     setTimeout(() => {
-
         heart.remove();
-
     }, 14000);
 
-
 }, 900);
-
-
 
 </script>
 
