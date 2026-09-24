@@ -1,0 +1,1786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For You, Thae💗</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    overflow: hidden;
+    font-family: "Segoe UI", sans-serif;
+
+    background:
+        radial-gradient(circle at 50% 20%, #ffd9eb 0%, transparent 35%),
+        linear-gradient(135deg, #ffb6d5, #ff78ad, #e95b98);
+
+    color: white;
+}
+
+
+/* ============================= */
+/* FLOATING HEARTS */
+/* ============================= */
+
+.floating-heart {
+    position: fixed;
+    bottom: -30px;
+    font-size: 20px;
+    opacity: 0.5;
+    pointer-events: none;
+
+    animation: floatHeart linear forwards;
+}
+
+@keyframes floatHeart {
+
+    0% {
+        transform: translateY(0) rotate(0);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+
+/* ============================= */
+/* MAIN CARD */
+/* ============================= */
+
+.wrapper {
+
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 18px;
+}
+
+
+.card {
+
+    width: 100%;
+    max-width: 430px;
+    min-height: 550px;
+
+    border-radius: 35px;
+
+    background: rgba(255,255,255,0.15);
+
+    backdrop-filter: blur(18px);
+
+    border: 1px solid rgba(255,255,255,0.3);
+
+    box-shadow:
+        0 25px 80px rgba(100,0,50,0.3);
+
+    position: relative;
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 35px 25px;
+}
+
+
+/* ============================= */
+/* SCREEN */
+/* ============================= */
+
+.screen {
+
+    width: 100%;
+
+    display: none;
+
+    text-align: center;
+
+    animation: screenIn 0.9s ease;
+}
+
+.screen.active {
+    display: block;
+}
+
+@keyframes screenIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px) scale(0.94);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+/* ============================= */
+/* TOP LABEL */
+/* ============================= */
+
+.label {
+
+    font-size: 15px;
+    color: black;
+    
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    opacity: 0.85;
+
+    margin-bottom: 18px;
+    font-weight: 600;
+}
+
+
+/* ============================= */
+/* TEXT */
+/* ============================= */
+
+h1 {
+    font-family: Georgia, serif;
+    font-size: 32px;
+    line-height: 1.2;
+    margin-bottom: 18px;
+    text-shadow: 0 4px 20px rgba(120,0,50,0.25);
+}
+
+.description {
+
+    font-size: 16px;
+
+    line-height: 1.8;
+
+    opacity: 0.95;
+    color: black;
+
+}
+
+
+/* ============================= */
+/* BUTTON */
+/* ============================= */
+
+.main-button {
+
+    margin-top: 35px;
+
+    border: none;
+
+    padding: 16px 30px;
+
+    border-radius: 50px;
+
+    background: white;
+
+    color: #e64f91;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 30px rgba(100,0,50,0.25);
+
+    transition: 0.25s;
+
+    animation: buttonPulse 2s infinite;
+}
+
+.main-button:hover {
+
+    transform: scale(1.07);
+}
+
+.main-button:active {
+
+    transform: scale(0.95);
+}
+
+@keyframes buttonPulse {
+
+    0%,100% {
+        box-shadow:
+            0 10px 30px rgba(100,0,50,0.25);
+    }
+
+    50% {
+        box-shadow:
+            0 10px 40px rgba(255,255,255,0.7);
+    }
+}
+
+
+/* ============================= */
+/* ENVELOPE */
+/* ============================= */
+
+.envelope {
+
+    font-size: 80px;
+
+    margin-bottom: 15px;
+
+    animation: envelopeFloat 2s infinite ease-in-out;
+}
+
+@keyframes envelopeFloat {
+
+    0%,100% {
+        transform: translateY(0) rotate(-3deg);
+    }
+
+    50% {
+        transform: translateY(-12px) rotate(3deg);
+    }
+}
+
+
+/* ============================= */
+/* CAKE */
+/* ============================= */
+
+.cake {
+
+    position: relative;
+
+    width: 200px;
+
+    height: 160px;
+
+    margin: 45px auto 15px;
+}
+
+
+/* cake body */
+
+.cake-body {
+
+    position: absolute;
+
+    bottom: 0;
+
+    left: 5px;
+
+    width: 190px;
+
+    height: 90px;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            #fff,
+            #ffd0e3
+        );
+
+    box-shadow:
+        0 12px 25px rgba(120,0,50,0.2);
+}
+
+
+/* cake top */
+
+.cake-body::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: -15px;
+
+    left: 0;
+
+    width: 190px;
+
+    height: 30px;
+
+    border-radius: 50%;
+
+    background: #fff5fa;
+}
+
+
+/* frosting */
+
+.cake-body::after {
+
+    content: "♥  ♥  ♥";
+
+    position: absolute;
+
+    bottom: 20px;
+
+    left: 0;
+
+    width: 100%;
+
+    color: #ff76ad;
+
+    letter-spacing: 14px;
+
+    font-size: 13px;
+}
+
+
+/* candle */
+
+.candle {
+
+    position: absolute;
+
+    width: 25px;
+
+    height: 75px;
+
+    left: 87px;
+
+    top: 0;
+
+    border-radius: 8px;
+
+    background:
+        repeating-linear-gradient(
+            45deg,
+            #ffffff 0px,
+            #ffffff 8px,
+            #ff7caf 8px,
+            #ff7caf 16px
+        );
+}
+
+
+/* wick */
+
+.wick {
+
+    position: absolute;
+
+    width: 4px;
+
+    height: 10px;
+
+    background: #382027;
+
+    left: 97px;
+
+    top: -9px;
+}
+
+
+/* flame */
+
+.flame {
+
+    position: absolute;
+
+    width: 28px;
+
+    height: 38px;
+
+    left: 85px;
+
+    top: -45px;
+
+    background:
+        radial-gradient(
+            circle at 50% 70%,
+            #fff 0 15%,
+            #ffd166 35%,
+            #ff8c42 65%,
+            transparent 70%
+        );
+
+    border-radius: 50% 50% 50% 0;
+
+    transform: rotate(-45deg) scale(0);
+
+    transition: 0.5s;
+
+    filter: drop-shadow(
+        0 0 15px #ffd166
+    );
+}
+
+
+.flame.lit {
+
+    transform: rotate(-45deg) scale(1);
+
+    animation: flameMove 0.45s infinite alternate;
+}
+
+@keyframes flameMove {
+
+    from {
+        transform: rotate(-45deg) scale(1);
+    }
+
+    to {
+        transform: rotate(-45deg) scale(1.12);
+    }
+}
+
+
+/* ============================= */
+/* TAP CANDLE */
+/* ============================= */
+
+.candle-area {
+
+    cursor: pointer;
+
+    display: inline-block;
+
+    padding: 15px;
+
+    border-radius: 30px;
+
+    transition: 0.3s;
+}
+
+.candle-area:hover {
+
+    transform: scale(1.05);
+}
+
+.tap-text {
+
+    font-size: 14px;
+
+    opacity: 0.9;
+
+    margin-top: 10px;
+}
+
+
+/* ============================= */
+/* HEART */
+/* ============================= */
+
+.heart-container {
+
+    position: relative;
+
+    width: 180px;
+
+    height: 180px;
+
+    margin: 45px auto 35px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+
+.heart {
+
+    position: absolute;
+
+    width: 125px;
+
+    height: 125px;
+
+    background: #ff397f;
+
+    transform: rotate(-45deg);
+
+    box-shadow:
+        0 0 30px #ff4d91,
+        0 0 70px rgba(255,70,140,0.6);
+
+    animation: heartBeat 1.2s infinite;
+}
+
+
+.heart::before,
+.heart::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 125px;
+
+    height: 125px;
+
+    background: #ff397f;
+
+    border-radius: 50%;
+}
+
+
+.heart::before {
+
+    top: -62px;
+    left: 0;
+}
+
+
+.heart::after {
+
+    top: 0;
+    left: 62px;
+}
+
+
+.heart-name {
+    position: absolute;
+
+    z-index: 10;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    font-family: Georgia, serif;
+
+    font-size: 22px;
+
+    font-style: italic;
+
+    font-weight: bold;
+
+    color: white;
+
+    white-space: nowrap;
+
+    text-align: center;
+
+    text-shadow:
+        0 2px 8px rgba(100,0,50,0.6);
+
+    animation: nameAppear 1.5s ease;
+}
+
+@keyframes heartBeat {
+
+    0%,100% {
+        transform: rotate(-45deg) scale(1);
+    }
+
+    50% {
+        transform: rotate(-45deg) scale(1.12);
+    }
+}
+
+
+@keyframes nameAppear {
+
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* ============================= */
+/* FINAL MESSAGE */
+/* ============================= */
+
+.final-name {
+
+    font-family: Georgia, serif;
+
+    font-size: clamp(38px, 10vw, 58px);
+
+    font-style: italic;
+
+    margin-bottom: 20px;
+
+    text-shadow:
+        0 0 15px white,
+        0 0 30px #ffb6d9;
+}
+
+
+.message {
+
+    font-size: 15px;
+
+    line-height: 1.9;
+
+    margin-top: 20px;
+}
+
+
+/* ============================= */
+/* FINAL MAGICAL SURPRISE */
+/* ============================= */
+
+.magic-heart {
+    position: fixed;
+    top: -80px;
+    z-index: 9999;
+    pointer-events: none;
+
+    text-align: center;
+
+    font-family: Georgia, serif;
+    font-weight: bold;
+
+    color: white;
+
+    text-shadow:
+        0 0 5px white,
+        0 0 15px #ffb6d9,
+        0 0 30px #ff4f91,
+        0 0 50px #ff3f87;
+
+    animation: magicalFall linear forwards;
+}
+
+@keyframes magicalFall {
+
+    0% {
+        transform:
+            translateY(-80px)
+            rotate(-15deg)
+            scale(0.5);
+
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    50% {
+        transform:
+            translateY(50vh)
+            rotate(15deg)
+            scale(1);
+    }
+
+    100% {
+        transform:
+            translateY(115vh)
+            rotate(-20deg)
+            scale(0.8);
+
+        opacity: 0;
+    }
+}
+
+
+/* Big floating hearts */
+
+.final-heart {
+    position: fixed;
+    z-index: 9998;
+    pointer-events: none;
+
+    font-size: 100px;
+
+    animation:
+        giantHeart 4s ease-out forwards;
+
+    filter:
+        drop-shadow(0 0 15px white)
+        drop-shadow(0 0 35px #ff4f91)
+        drop-shadow(0 0 60px #ff3f87);
+}
+
+@keyframes giantHeart {
+
+    0% {
+        transform:
+            translateY(100vh)
+            scale(0);
+
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    70% {
+        transform:
+            translateY(35vh)
+            scale(1.2);
+    }
+
+    100% {
+        transform:
+            translateY(-20vh)
+            scale(1.5);
+
+        opacity: 0;
+    }
+}
+
+
+/* Shiny stars */
+
+.magic-star {
+    position: fixed;
+    z-index: 10000;
+
+    pointer-events: none;
+
+    color: white;
+
+    font-size: 20px;
+
+    text-shadow:
+        0 0 8px white,
+        0 0 20px white,
+        0 0 35px #ff7eb5;
+
+    animation:
+        starShine 1.5s ease-out forwards;
+}
+
+@keyframes starShine {
+
+    0% {
+        transform: scale(0) rotate(0);
+        opacity: 0;
+    }
+
+    40% {
+        transform: scale(1.5) rotate(90deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(0) rotate(180deg);
+        opacity: 0;
+    }
+}
+
+
+/* Whole screen glow */
+
+body.magic-mode {
+    animation:
+        magicBackground 4s ease-in-out;
+}
+
+@keyframes magicBackground {
+
+    0% {
+        filter: brightness(1);
+    }
+
+    30% {
+        filter: brightness(1.35);
+    }
+
+    60% {
+        filter: brightness(1.15);
+    }
+
+    100% {
+        filter: brightness(1);
+    }
+}
+
+
+/* Her name in the center */
+
+.magic-name {
+
+    position: fixed;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%)
+        scale(0);
+
+    z-index: 10001;
+
+    pointer-events: none;
+
+    font-family: Georgia, serif;
+
+    font-style: italic;
+
+    font-size: 55px;
+
+    font-weight: bold;
+
+    color: white;
+
+    white-space: nowrap;
+
+    text-shadow:
+        0 0 8px white,
+        0 0 20px white,
+        0 0 40px #ff8fc4,
+        0 0 70px #ff3f87;
+
+    animation:
+        nameMagic 4s ease-out forwards;
+}
+
+@keyframes nameMagic {
+
+    0% {
+        transform:
+            translate(-50%, -50%)
+            scale(0);
+
+        opacity: 0;
+    }
+
+    20% {
+        transform:
+            translate(-50%, -50%)
+            scale(1.2);
+
+        opacity: 1;
+    }
+
+    45% {
+        transform:
+            translate(-50%, -50%)
+            scale(1);
+    }
+
+    75% {
+        transform:
+            translate(-50%, -50%)
+            scale(1.1);
+
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translate(-50%, -50%)
+            scale(1.3);
+
+        opacity: 0;
+    }
+}
+
+/* ============================= */
+/* MUSIC BUTTON */
+/* ============================= */
+
+.music-button {
+
+    position: fixed;
+
+    right: 18px;
+
+    top: 18px;
+
+    width: 45px;
+
+    height: 45px;
+
+    border-radius: 50%;
+
+    border: none;
+
+    background: rgba(255,255,255,0.8);
+
+    color: #e94e91;
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    z-index: 1000;
+
+    box-shadow: 0 5px 20px rgba(100,0,50,0.2);
+}
+
+
+
+
+/* ============================= */
+/* CONFETTI */
+/* ============================= */
+
+.confetti {
+
+    position: fixed;
+
+    top: -20px;
+
+    width: 9px;
+
+    height: 14px;
+
+    z-index: 999;
+
+    pointer-events: none;
+
+    animation: confettiFall linear forwards;
+}
+
+
+@keyframes confettiFall {
+
+    to {
+
+        transform:
+            translateY(110vh)
+            rotate(720deg);
+
+        opacity: 0;
+    }
+}
+
+
+/* ============================= */
+/* SPARKLES */
+/* ============================= */
+
+.sparkle {
+
+    position: fixed;
+
+    pointer-events: none;
+
+    animation: sparkleAnim 1s forwards;
+
+    z-index: 500;
+
+}
+
+
+@keyframes sparkleAnim {
+
+    0% {
+
+        transform: scale(0);
+
+        opacity: 1;
+    }
+
+    50% {
+
+        transform: scale(1.5);
+
+        opacity: 1;
+    }
+
+    100% {
+
+        transform: scale(0)
+        translateY(-30px);
+
+        opacity: 0;
+    }
+}
+
+
+/* ============================= */
+/* MOBILE */
+/* ============================= */
+
+@media(max-width: 500px) {
+
+    .wrapper {
+        padding: 15px;
+    }
+
+    .card {
+        width: 90%;
+        min-height: 470px;
+        max-height: 78vh;
+
+        padding: 22px 18px;
+
+        border-radius: 26px;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    .description {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .main-button {
+        margin-top: 25px;
+        padding: 13px 24px;
+        font-size: 14px;
+    }
+
+    .envelope {
+        font-size: 60px;
+    }
+
+    .cake {
+        transform: scale(0.75);
+        margin: 25px auto 5px;
+    }
+
+    .heart-container {
+        transform: scale(0.72);
+        margin: 20px auto;
+    }
+
+    .final-name {
+        font-size: 40px;
+    }
+
+    .message {
+        font-size: 13px;
+        line-height: 1.7;
+    }
+}
+</style>
+</head>
+
+
+<body>
+
+
+<!-- MUSIC -->
+
+<audio
+    id="music"
+    src="./letter Z (zenith) ရှင်နေရတဲ့ အဓိပ္ပာယ်မင်း ဖြစ်လိမ့်မယ်.mp3"
+    preload="auto"
+    loop>
+</audio>
+
+<button
+    class="music-button"
+    onclick="toggleMusic()">
+
+    🎵
+
+</button>
+
+
+<div class="wrapper">
+
+<div class="card">
+
+
+<!-- ================================= -->
+<!-- SCREEN 1 -->
+<!-- ================================= -->
+
+<section
+    class="screen active"
+    id="screen1">
+
+    <div class="envelope">
+        💌
+    </div>
+
+    <div class="label">
+        A little surprise
+    </div>
+
+    <h1>
+        For You,  Thae' 💗
+    </h1>
+
+    <p class="description">
+
+        I made something special<br>
+        just for you...
+
+        <br><br>
+
+        Are you ready? ✨
+
+    </p>
+
+
+    <button
+        class="main-button"
+        onclick="start()">
+
+        💕 Open Your Surprise
+
+    </button>
+
+</section>
+
+
+
+<!-- ================================= -->
+<!-- SCREEN 2 -->
+<!-- ================================= -->
+
+<section
+    class="screen"
+    id="screen2">
+
+    <div class="label">
+        Step 1 of 2
+    </div>
+
+    <h1>
+        Make a Wish 🎂
+    </h1>
+
+    <p class="description">
+
+        Before your birthday magic begins...
+
+        <br>
+
+        Take a little moment.
+
+        <br><br>
+
+        Make a beautiful wish
+        in your heart. 💕
+
+    </p>
+
+
+    <div
+        class="candle-area"
+        onclick="lightCandle()">
+
+        <div class="cake">
+
+            <div class="cake-body"></div>
+
+            <div class="candle"></div>
+
+            <div class="wick"></div>
+
+            <div
+                class="flame"
+                id="flame">
+
+            </div>
+
+        </div>
+
+        <div class="tap-text">
+
+            👆 Tap the candle to light it
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================================= -->
+<!-- SCREEN 3 -->
+<!-- ================================= -->
+
+<section
+    class="screen"
+    id="screen3">
+
+    <div class="label">
+        Your birthday magic ✨
+    </div>
+
+
+    <div class="heart-container">
+
+        <div class="heart"></div>
+
+        <div class="heart-name">
+            Julia
+        </div>
+
+    </div>
+
+
+    <h1 >
+        Happy Birthday ချစ်သူ
+    </h1>
+
+
+    <p class="description">
+
+        Today is all about you.
+
+        <br>
+
+        And I hope this little surprise
+        makes you smile. 🌸
+
+    </p>
+
+
+    <button
+        class="main-button"
+        onclick="nextMessage()">
+
+        💌 Read Your Message
+
+    </button>
+
+</section>
+
+
+
+<!-- ================================= -->
+<!-- SCREEN 4 -->
+<!-- ================================= -->
+
+<section
+    class="screen"
+    id="screen4">
+
+    <div class="label">
+        A little message for you
+    </div>
+
+
+    <div class="final-name">
+        Julia
+    </div>
+
+
+    <div class="message">
+
+        ‌မွေးနေ့မှာ‌ပျော်ရွှင်ပါစေ သဲသဲ.. 💗
+
+        <br><br>
+
+        အချိန်တွေအကြာကြီးအတူတူဆက်ရှိသွားပြီးတော့ 
+                နောက်မွေးနေ့တွေကိုလည်း အတူတူဖြတ်သန်းချင်ပါတယ် ✨
+
+        <br><br>
+
+        အရမ်းချစ်တယ်. 🌸
+
+        <br><br>
+
+        <strong>
+            Happy Birthday, My Beautiful. 🎂💕
+        </strong>
+
+    </div>
+
+
+    <button
+        class="main-button"
+        onclick="finalCelebrate()">
+
+        🎉 Celebrate With Me!
+
+    </button>
+
+</section>
+
+
+</div>
+
+</div>
+
+
+
+<script>
+
+
+/* ================================= */
+/* ELEMENTS */
+/* ================================= */
+
+const music =
+    document.getElementById("music");
+
+const flame =
+    document.getElementById("flame");
+
+
+/* ================================= */
+/* CHANGE SCREEN */
+/* ================================= */
+
+function showScreen(number) {
+
+    document
+        .querySelectorAll(".screen")
+        .forEach(screen => {
+
+            screen.classList.remove("active");
+
+        });
+
+
+    document
+        .getElementById("screen" + number)
+        .classList.add("active");
+
+}
+
+
+/* ================================= */
+/* START */
+/* ================================= */
+
+function start() {
+
+    music.volume = 1.0;
+
+    music.play();
+
+    sparkleBurst();
+
+    confetti(70);
+
+    setTimeout(() => {
+        showScreen(2);
+    }, 900);
+}
+
+/* ================================= */
+/* LIGHT CANDLE */
+/* ================================= */
+
+function lightCandle() {
+
+    if (flame.classList.contains("lit")) {
+        return;
+    }
+
+
+    flame.classList.add("lit");
+
+
+    sparkleBurst();
+
+    confetti(100);
+
+
+    /* Wait for the magical moment */
+
+    setTimeout(() => {
+
+        showScreen(3);
+
+        massiveCelebration();
+
+    }, 1800);
+
+}
+
+
+/* ================================= */
+/* NEXT MESSAGE */
+/* ================================= */
+
+function nextMessage() {
+
+    sparkleBurst();
+
+    setTimeout(() => {
+
+        showScreen(4);
+
+    }, 600);
+
+}
+
+
+/* ================================= */
+/* FINAL CELEBRATION */
+/* ================================= */
+
+function finalCelebrate() {
+
+    document.body.classList.add("magic-mode");
+
+    // First big explosion 🎉
+    massiveCelebration();
+    sparkleBurst();
+
+    // Her name appears in the middle 💗
+    const name = document.createElement("div");
+
+    name.className = "magic-name";
+
+    name.innerHTML = "ချစ်တယ်' 💗";
+
+    document.body.appendChild(name);
+
+
+    // Falling hearts with her name 💕
+    let count = 0;
+
+    const heartRain = setInterval(() => {
+
+        createMagicHeart();
+
+        count++;
+
+        if (count >= 100) {
+            clearInterval(heartRain);
+        }
+
+    }, 70);
+
+
+    // Big floating hearts 💗
+    for (let i = 0; i < 15; i++) {
+
+        setTimeout(() => {
+
+            createGiantHeart();
+
+        }, i * 250);
+
+    }
+
+
+    // Shiny stars ✨
+    for (let i = 0; i < 100; i++) {
+
+        setTimeout(() => {
+
+            createMagicStar();
+
+        }, i * 70);
+
+    }
+
+
+    // More confetti 🎉
+    setTimeout(() => {
+        massiveCelebration();
+    }, 1000);
+
+
+    setTimeout(() => {
+        massiveCelebration();
+    }, 2500);
+
+
+    // Remove center name after animation
+    setTimeout(() => {
+
+        name.remove();
+
+        document.body.classList.remove("magic-mode");
+
+    }, 4500);
+
+}
+
+
+function createMagicHeart() {
+
+    const heart = document.createElement("div");
+
+    heart.className = "magic-heart";
+
+    const names = [
+        "ချစ်တယ်' 💗",
+        "ချစ်တယ်' ♡",
+        "ချစ်တယ်' ✨",
+        "ချစ်တယ်' 💕",
+        "ချစ်တယ်' 🌸"
+    ];
+
+    heart.innerHTML =
+        "♥<br><span style='font-size:14px'>" +
+        names[Math.floor(Math.random() * names.length)] +
+        "</span>";
+
+    heart.style.left =
+        Math.random() * 100 + "vw";
+
+    heart.style.fontSize =
+        (Math.random() * 25 + 30) + "px";
+
+    heart.style.animationDuration =
+        (Math.random() * 3 + 3) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 7000);
+}
+
+
+function createGiantHeart() {
+
+    const heart = document.createElement("div");
+
+    heart.className = "final-heart";
+
+    heart.innerHTML = "💗";
+
+    heart.style.left =
+        Math.random() * 90 + "vw";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 4500);
+}
+
+
+function createMagicStar() {
+
+    const star = document.createElement("div");
+
+    star.className = "magic-star";
+
+    star.innerHTML =
+        ["✨", "✦", "✧", "♡", "💫"]
+        [Math.floor(Math.random() * 5)];
+
+    star.style.left =
+        Math.random() * 100 + "vw";
+
+    star.style.top =
+        Math.random() * 100 + "vh";
+
+    star.style.fontSize =
+        (Math.random() * 15 + 10) + "px";
+
+    document.body.appendChild(star);
+
+    setTimeout(() => {
+        star.remove();
+    }, 1600);
+}
+
+/* ================================= */
+/* MUSIC */
+/* ================================= */
+
+function toggleMusic() {
+
+    if (music.paused) {
+
+        music.volume = 1.0;
+
+        music.play();
+
+    } else {
+
+        music.pause();
+
+    }
+
+}
+
+/* ================================= */
+/* CONFETTI */
+/* ================================= */
+
+function confetti(amount) {
+
+    const colors = [
+
+        "#ffffff",
+        "#ffd1e5",
+        "#ff4f91",
+        "#ffd166",
+        "#ff8fab",
+        "#f8c8dc"
+
+    ];
+
+
+    for(let i = 0; i < amount; i++) {
+
+        const piece =
+            document.createElement("div");
+
+
+        piece.className = "confetti";
+
+
+        piece.style.left =
+            Math.random() * 100 + "vw";
+
+
+        piece.style.background =
+            colors[
+                Math.floor(
+                    Math.random() *
+                    colors.length
+                )
+            ];
+
+
+        piece.style.animationDuration =
+            (Math.random() * 2 + 2) + "s";
+
+
+        piece.style.width =
+            (Math.random() * 7 + 5) + "px";
+
+
+        piece.style.height =
+            (Math.random() * 12 + 6) + "px";
+
+
+        document.body.appendChild(piece);
+
+
+        setTimeout(() => {
+
+            piece.remove();
+
+        }, 5000);
+
+    }
+
+}
+
+
+/* ================================= */
+/* BIG CELEBRATION */
+/* ================================= */
+
+function massiveCelebration() {
+
+    confetti(180);
+
+}
+
+
+/* ================================= */
+/* SPARKLES */
+/* ================================= */
+
+function sparkleBurst() {
+
+    for(let i = 0; i < 25; i++) {
+
+        const sparkle =
+            document.createElement("div");
+
+
+        sparkle.className =
+            "sparkle";
+
+
+        sparkle.innerHTML =
+            ["✨","💗","💕","✦","♡"]
+            [
+                Math.floor(
+                    Math.random() * 5
+                )
+            ];
+
+
+        sparkle.style.left =
+            Math.random() * 100 + "vw";
+
+
+        sparkle.style.top =
+            Math.random() * 100 + "vh";
+
+
+        sparkle.style.fontSize =
+            (Math.random() * 15 + 12) + "px";
+
+
+        document.body.appendChild(sparkle);
+
+
+        setTimeout(() => {
+
+            sparkle.remove();
+
+        }, 1000);
+
+    }
+
+}
+
+
+/* ================================= */
+/* FLOATING HEARTS */
+/* ================================= */
+
+setInterval(() => {
+
+    const heart =
+        document.createElement("div");
+
+
+    heart.className =
+        "floating-heart";
+
+
+    heart.innerHTML =
+        ["♡","♥","💕","💗","✨"]
+        [
+            Math.floor(
+                Math.random() * 5
+            )
+        ];
+
+
+    heart.style.left =
+        Math.random() * 100 + "vw";
+
+
+    heart.style.fontSize =
+        (Math.random() * 18 + 12) + "px";
+
+
+    heart.style.animationDuration =
+        (Math.random() * 6 + 7) + "s";
+
+
+    document.body.appendChild(heart);
+
+
+    setTimeout(() => {
+
+        heart.remove();
+
+    }, 14000);
+
+
+}, 900);
+
+
+
+</script>
+
+</body>
+</html>
